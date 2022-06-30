@@ -1,18 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour
+using System.Linq;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
+public sealed class GameManager : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public static GameManager Instance { get; private set; }
+	[SyncObject]
+	public readonly SyncList<NetworkPlayer> players = new SyncList<NetworkPlayer>();
+	[SyncVar]
+	public bool canStartRamble = false;
+	private void Awake()
+	{
+		Instance = this;
+	}
+	void Update()
+	{
+		if (!IsServer) return;
+		canStartRamble = players.All(p => p.isReady);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	}
+	[Server]
+	public void StartGame()
+	{
+		foreach (NetworkPlayer player in players)
+		{
+			player.StartGame();
+		}
+	}
+	[Server]
+	public void EndGame()
+	{
+		foreach (NetworkPlayer player in players)
+		{
+			player.EndGame();
+		}
+	}
 }
