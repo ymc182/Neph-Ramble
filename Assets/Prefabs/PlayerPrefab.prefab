@@ -48,7 +48,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2343753522390029821}
   _networkObjectCache: {fileID: 2343753522390029821}
-  PawnPrefab: {fileID: 7847485221171023580, guid: 2028c6b598f52b64f9ccd1ee250ce2a2, type: 3}
+  PawnPrefab: {fileID: 3943709918072438387, guid: 9d3c9967f315d4140a77476630ef4cd3, type: 3}
   username: 
   isReady: 0
   controlledPawn: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 0
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects:

@@ -14,6 +14,8 @@ public class NetworkPlayer : NetworkBehaviour
 	[SyncVar]
 	public Pawn controlledPawn;
 
+	private GameObject _connectBtn;
+
 
 	public override void OnStartServer()
 	{
@@ -40,8 +42,24 @@ public class NetworkPlayer : NetworkBehaviour
 	{
 		base.OnStartClient();
 		if (!IsOwner) return;
-		/* 	username = GameObject.FindObjectOfType<NearWalletHandler>().walletAddress; */
-		ServerSpawnPawn("Guest");
+		username = GameObject.FindObjectOfType<NearWalletHandler>().walletAddress;
+		if (username == "")
+		{
+			username = "Guest";
+		}
+		ServerSpawnPawn(username);
+		_connectBtn = GameObject.Find("ClientConnectBtn");
+		_connectBtn.SetActive(false);
+	}
+	public override void OnStopClient()
+	{
+		base.OnStopClient();
+		if (!IsOwner) return;
+		if (_connectBtn != null)
+		{
+			_connectBtn.SetActive(true);
+		}
+
 	}
 	public void EndGame()
 	{
@@ -49,6 +67,17 @@ public class NetworkPlayer : NetworkBehaviour
 		{
 			controlledPawn.Despawn();
 		}
+	}
+	[ServerRpc]
+	public void Teleport(Vector3 position)
+	{
+		Debug.Log("[SERVER] Teleporting ");
+		ObsTeleport(controlledPawn, position);
+	}
+	[ObserversRpc(BufferLast = true)]
+	private void ObsTeleport(Pawn pawn, Vector3 position)
+	{
+		pawn.Teleport(position);
 	}
 	[ServerRpc]
 	private void ServerSetIsReady(bool value)
@@ -60,9 +89,10 @@ public class NetworkPlayer : NetworkBehaviour
 	{
 		if (controlledPawn == null)
 		{
-			GameObject pawnInstance = Instantiate(PawnPrefab);
+			GameObject pawnInstance = Instantiate(PawnPrefab, transform.position, Quaternion.identity);
 			Spawn(pawnInstance, Owner);
 			controlledPawn = pawnInstance.GetComponent<Pawn>();
+
 			ObsSetName(controlledPawn, name);
 		}
 	}
