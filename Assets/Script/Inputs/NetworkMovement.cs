@@ -77,14 +77,15 @@ public sealed class NetworkMovement : NetworkBehaviour
 
 		Vector3 moveDirection = new Vector3(moveVector.x, 0f, moveVector.y);
 
-		/* 		if (moveVector.x != 0 || moveVector.y != 0)
-				{
-					_animator.SetBool("isMoving", true);
-				}
-				else
-				{
-					_animator.SetBool("isMoving", false);
-				} */
+		if ((moveVector.x != 0 || moveVector.y != 0) && _animator.GetBool("Move") == false)
+		{
+			_animator.SetBool("Move", true);
+		}
+		else if ((moveVector.x == 0 && moveVector.y == 0) && _animator.GetBool("Move") == true)
+		{
+			_animator.SetBool("Move", false);
+		}
+
 
 
 		_characterController.Move(moveDirection * Time.deltaTime * speed);

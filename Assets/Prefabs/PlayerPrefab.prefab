@@ -48,7 +48,7 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2343753522390029821}
   _networkObjectCache: {fileID: 2343753522390029821}
-  PawnPrefab: {fileID: 3943709918072438387, guid: 9d3c9967f315d4140a77476630ef4cd3, type: 3}
+  PawnPrefab: {fileID: 7057074678547412379, guid: f05dcc48fdd76e442b410e2700cc1a72, type: 3}
   username: 
   isReady: 0
   controlledPawn: {fileID: 0}

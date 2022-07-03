@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f2c90598228a74797da5cddda1610e, type: 3}
   m_Name: PlayFlowConfig
   m_EditorClassIdentifier: 
-  token: da245b1abb6c6db658af18e9423858ca
+  token: eaa594c86be781b4021f4f241b9f9ce8
   playflowUrl: 
   serverArguments: 
   enableSSL: 1
