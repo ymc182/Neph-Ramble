@@ -1577,9 +1577,10 @@ GameObject:
   - component: {fileID: -764428305508949055}
   - component: {fileID: -2440783359878401873}
   - component: {fileID: 8448735538717514531}
+  - component: {fileID: 1371575595635725859}
   m_Layer: 0
   m_Name: RobotPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1671,7 +1672,7 @@ MonoBehaviour:
   _isNetworked: 1
   _hasParentNetworkObjectAtEdit: 0
   NetworkObserver: {fileID: 0}
-  _prefabId: -1
+  _prefabId: 2
   _scenePathHash: 0
   _sceneId: 0
   _sceneNetworkObjects: []
@@ -1777,6 +1778,19 @@ MonoBehaviour:
   _synchronizeInterval: 0.1
   _clientAuthoritative: 1
   _sendToOwner: 0
+--- !u!65 &1371575595635725859
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7057074678547412379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 1, z: 0.75}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7110033183912855551
 GameObject:
   m_ObjectHideFlags: 0
